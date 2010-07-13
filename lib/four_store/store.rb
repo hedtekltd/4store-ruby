@@ -18,7 +18,7 @@ module FourStore
 
     def select(query)
       http.start do |h|
-        request = Net::HTTP::Post.new(@endpoint.path, {'Accept-Charset' => 'UTF-8')
+        request = Net::HTTP::Post.new(@endpoint.path, {'Accept-Charset' => 'UTF-8'})
         request.set_form_data({ 'query' => Namespace::to_sparql + query, 'soft-limit' => @softlimit })
         response = h.request(request)
         parse_sparql_xml_results(response.body)
